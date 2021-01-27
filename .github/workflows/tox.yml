@@ -79,27 +79,27 @@ jobs:
           python -m pip install tox
           tox -e py$(printf "${{ matrix.python }}" | tr -d '.')-devel
 
-  coverage:
-    needs: test
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@master
-        with:
-          python-version: "3.x"
-      - uses: actions/download-artifact@v2
-        with:
-          name: coverage-results
-      - name: run coverage
-        run: |
-          python -m pip install tox codecov
-          tox -e coverage
-          codecov -X pycov -X gcov
-        env:
-          CODECOV_TOKEN: ${{ secrets.codecov_token }}
+  # coverage:
+  #   needs: test
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-python@master
+  #       with:
+  #         python-version: "3.x"
+  #     - uses: actions/download-artifact@v2
+  #       with:
+  #         name: coverage-results
+  #     - name: run coverage
+  #       run: |
+  #         python -m pip install tox codecov
+  #         tox -e coverage
+  #         codecov -X pycov -X gcov
+  #       env:
+  #         CODECOV_TOKEN: ${{ secrets.codecov_token }}
 
   publish:
-    needs: coverage
+    needs: test
     if: startsWith(github.ref, 'refs/tags/')  # Only release during tags
     runs-on: ubuntu-20.04
 
