@@ -25,9 +25,12 @@ try:
                 print("Bindep failed to list profiles: %s", result.stdout)
                 sys.exit(result.returncode)
             lines = result.stdout.splitlines()
-            profiles = lines[lines.index("Configuration profiles:") + 1 :]
-            if "test" in profiles:
-                cmd.append("test")
+            try:
+                profiles = lines[lines.index("Configuration profiles:") + 1 :]
+                if "test" in profiles:
+                    cmd.append("test")
+            except ValueError:
+                pass
 
             result = subprocess.run(
                 cmd,
