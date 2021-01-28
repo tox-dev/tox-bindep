@@ -1,6 +1,6 @@
 # tox-bindep
 
-Tox plugin runs bindep checks before tests in order to avoid confusing
+`tox` plugin runs bindep checks before tests in order to avoid confusing
 errors if user forgot to install system level requirements.
 
 This plugin looks at existing profiles and adds "test" profile if available.
