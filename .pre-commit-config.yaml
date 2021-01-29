@@ -38,12 +38,16 @@ repos:
         entry: mypy src/
         pass_filenames: false
         additional_dependencies:
+          - bindep>=2.8.1
+          - packaging
           - py>=1.9.0
   - repo: https://github.com/pre-commit/mirrors-pylint
     rev: v2.6.0
     hooks:
       - id: pylint
         additional_dependencies:
+          - bindep>=2.8.1
+          - packaging
           - pytest
           - pyyaml
           - tox
