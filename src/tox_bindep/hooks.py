@@ -6,6 +6,9 @@ import os
 import subprocess
 import sys
 
+from bindep import version as bindep_version
+from packaging.version import Version
+
 try:
     from tox import hookimpl
 
@@ -13,10 +16,14 @@ try:
     def tox_configure(config):
         """..."""
         if os.path.isfile("bindep.txt"):
-            cmd = ["bindep", "-b"]
+            if Version(bindep_version) > Version("2.8.1"):
+                module_name = "bindep"
+            else:
+                module_name = "bindep.main"
+            cmd = [sys.executable, "-m", module_name, "-b"]
             # determine profiles
             result = subprocess.run(
-                ["bindep", "--profiles"],
+                [sys.executable, "-m", module_name, "--profiles"],
                 check=False,
                 universal_newlines=True,
                 stdout=subprocess.PIPE,
