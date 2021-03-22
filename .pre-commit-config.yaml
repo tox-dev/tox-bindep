@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/PyCQA/isort
-    rev: 5.7.0
+    rev: 5.8.0
     hooks:
       - id: isort
   - repo: https://github.com/python/black.git
@@ -19,7 +19,7 @@ repos:
       - id: check-merge-conflict
       - id: debug-statements
   - repo: https://gitlab.com/pycqa/flake8.git
-    rev: 3.8.4
+    rev: 3.9.0
     hooks:
       - id: flake8
   - repo: https://github.com/adrienverge/yamllint.git
@@ -42,7 +42,7 @@ repos:
           - packaging
           - py>=1.9.0
   - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v2.6.0
+    rev: v2.7.2
     hooks:
       - id: pylint
         additional_dependencies:
