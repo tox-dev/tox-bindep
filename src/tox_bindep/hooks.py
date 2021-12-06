@@ -57,7 +57,6 @@ try:
                     print(result.stderr, file=sys.stderr)
                 sys.exit(result.returncode)
 
-
 except ImportError:
     # tox4
     logging.error("tox-bindep disabled itself as it does not support tox4 yet.")
