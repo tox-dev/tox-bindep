@@ -48,8 +48,8 @@ try:
             )
             if result.returncode:
                 print(
-                    "Running '%s' returned %s, likely missing "
-                    "system dependencies." % (" ".join(cmd), result.returncode)
+                    f"Running '{' '.join(cmd)}' returned {result.returncode}, "
+                    "likely missing system dependencies."
                 )
                 if result.stdout:
                     print(result.stdout)
